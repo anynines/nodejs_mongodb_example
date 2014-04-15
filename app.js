@@ -64,30 +64,11 @@ app.use(function(err, req, res, next) {
     });
 });
 
-/*
-// read the mongodb url included in the VCAP_SERVICES env JSON hash
-var read_mongodb_url_from_env = function() {
-	var vcap_services = JSON.parse(process.env.VCAP_SERVICES);
-	mongo_url = vcap_services['mongodb-2.0'][0].credentials.url;
-	debug(JSON.stringify(mongo_url));
-	return mongo_url;
-}
-
-// initialize mongodb connection
-var connect = function () {
-	var options = { server: { socketOptions: { keepAlive: 1 } } };
-	mongoose.connect(read_mongodb_url_from_env(), options);
-	console.log('Connected to the database');
-}
-connect();
-*/
 var db_manager = new models.Db();
 var db = db_manager.connect();
 
-/*
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-*/
+// print env information
+console.log("Starting application in " + app.get('env') + " mode.");
 
 db.once('open', function callback () {
 	var alberts_quote = new models.Quote({ author: "Albert Einstein", quote: "E = m*c^2" });
