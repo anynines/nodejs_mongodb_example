@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 var quotes_controller = require('./../controllers/quotes_controller')
 
-/* GET users listing. */
 router.get('/', function(req, res) {
+	quotes_controller.random_quote(req,res);
+});
+
+router.get('/random', function(req, res) {
 	quotes_controller.random_quote(req,res);
 });
 
