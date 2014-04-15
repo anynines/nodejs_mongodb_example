@@ -72,14 +72,17 @@ console.log("Starting application in " + app.get('env') + " mode.");
 
 db.once('open', function callback () {
 	var alberts_quote = new models.Quote({ author: "Albert Einstein", quote: "E = m*c^2" });
+	console.log(util.inspect(alberts_quote));
+	
 	var quote2 = new models.Quote({ author: "Henry Ford", quote: "Wenn die Bürger unser Finanzsystem verstehen würden, hätten wir eine Revolution vor morgen früh." });
+	
 	alberts_quote.save(function (err, alberts_quote) {
-		if (err) return console.error(err);
+		if (err) return console.log(err);
 		debug(alberts_quote.to_s());
 	});
 	
 	quote2.save(function (err, quote2) {
-		if (err) return console.error(err);
+		if (err) return console.log(err);
 	});
 	
 	models.Quote.find( function ( err, quotes ){
