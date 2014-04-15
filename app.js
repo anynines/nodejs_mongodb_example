@@ -16,7 +16,13 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
+app.engine('html', require('hogan-express'));
+app.set('view engine', 'html');
+app.set('layout', 'layout');
+if (app.get('env') === 'production') {
+	app.enable('view cache'); // only cache views in production env
+}
+//app.set('partials', {header: "includes/header"});
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -85,11 +91,26 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', function callback () {
 	var alberts_quote = new models.Quote({ author: "Albert Einstein", quote: "E = m*c^2" });
+	var quote2 = new models.Quote({ author: "Henry Ford", quote: "Wenn die Bürger unser Finanzsystem verstehen würden, hätten wir eine Revolution vor morgen früh." });
 	alberts_quote.save(function (err, alberts_quote) {
 		if (err) return console.error(err);
 		debug(alberts_quote.to_s());
 	});
+	
+	quote2.save(function (err, quote2) {
+		if (err) return console.error(err);
+	});
+	
+	models.Quote.find( function ( err, quotes ){
+		/*
+		for(var i = 0; i<quotes.length; i++) {
+			debug(util.inspect(quotes[i]));
+		}
+		*/
+	});
 });
+
+
 
 
 module.exports = app;

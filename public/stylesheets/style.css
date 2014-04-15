@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+.quote {
+	font-size: 1.4em;
+	text-align: center;
+}
+
+.author {
+	font-size: 0.9em;
+	text-align: center;
+}
