@@ -20,3 +20,16 @@ a {
 .center {
 	text-align: center;
 }
+
+.v-offset {
+	margin-top: 100px;
+}
+
+.v-offset-small {
+	margin-top: 50px;
+}
+
+.button-width {
+	min-width: 80px;
+	width: 80px;
+}

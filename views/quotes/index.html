@@ -1,4 +1,17 @@
 <h1>{{ title }}</h1>
-{{#quotes}}
-<p><a href="/quotes/{{_id}}" class="quote">{{quote}}</a> - <span class="label label-default">{{author}}</span></p>
-{{/quotes}}
+<ul>
+	{{#quotes}}
+	<li>
+		<p>
+			<a href="/quotes/{{_id}}" class="quote">{{quote}}</a> - <span class="label label-default">{{author}}</span>
+		</p>
+	</li>
+	{{/quotes}}
+</ul>
+
+<p class="v-offset-small">
+	<a href="/quotes/new" class="btn btn-success btn-lg active button-width" role="button">Add Quote</a>
+</p>
+<p>
+	<a href="/" class="btn btn-primary btn-lg active button-width" role="button">Random</a>
+</p>

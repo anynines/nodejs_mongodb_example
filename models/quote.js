@@ -1,12 +1,10 @@
 var mongoose = require('mongoose')
-	, random = require('mongoose-random')
 	, Schema = mongoose.Schema;
 
 var QuoteSchema = new Schema({
   	author: {type : String, trim: true},
   	quote: {type : String, trim: true}
 })
-QuoteSchema.plugin(random());
 
 QuoteSchema.methods = {
 	to_s: function () {

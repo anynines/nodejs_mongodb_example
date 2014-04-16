@@ -22,7 +22,7 @@ router.get('/quotes/:id', function(req, res) {
 	quotes_controller.show(req, res);
 })
 
-router.delete('/quotes/:id', function(req, res) {
+router.get('/quotes/:id/delete', function(req, res) {
 	quotes_controller.delete(req, res);
 });
 

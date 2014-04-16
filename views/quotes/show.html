@@ -1,2 +1,11 @@
 <p class="quote">"{{ quote.quote }}"</p>
 <p class="center"><span class="label label-default">{{ quote.author }}</span></p>
+
+
+<p class="center v-offset-small">
+	<a href="/quotes/{{quote._id}}/delete" class="btn btn-danger btn-lg active button-width">Delete</a>
+</p>
+
+<p class="center">
+	<a href="/quotes" class="btn btn-primary btn-lg active button-width" role="button">List</a>
+</p>

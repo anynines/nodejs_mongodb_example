@@ -16,7 +16,6 @@
     "body-parser": "~1.0.0",
     "debug": "~0.7.4",
     "hogan-express": "*",
-	"mongoose": "~3.8.8",
-	"mongoose-random": "*"
+    "mongoose": "~3.8.8"
   }
 }
