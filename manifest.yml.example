@@ -1,14 +1,14 @@
 ---
 applications:
-- name: nodejs_mongodb_example
+- name: app_name
   memory: 512M
   buildpack: https://github.com/heroku/heroku-buildpack-nodejs.git
   instances: 1
-  host: nodejs_mongodb_example
+  host: app_name
   domain: de.a9sapp.eu
   path: .
   services:
-    mongodb-nodejs_mongodb_example:
+    mongodb-app_name:
       label: mongodb
       provider: core
       version: '2.0'
