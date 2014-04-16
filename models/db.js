@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
 var debug = require('debug')('models/db.js');
+var models = require('../models');
 
 // Constructor
 function Db() {
@@ -28,6 +29,25 @@ Db.prototype.read_mongodb_url_from_env = function() {
 		console.log("Please ensure that you have bound a MongoDB service instance to the application!")
 		throw err
 	}
-}
+};
+
+Db.prototype.insert_seeds_if_needed = function() {
+	models.Quote.count({}, function(err, count) {
+
+		if(count===0) {
+			console.log("Inserting seeds into the database!");
+			var seeds = models.seeds;
+			for(var i=0; i< seeds.length; i++) {
+				var quote = new models.Quote({ author: seeds[i].author, quote: seeds[i].quote });
+				quote.save(function (err, quote) {
+					if (err) return console.log(err);
+				});
+			}
+		} else {
+			console.log("Found data. Skipping seeds section!");
+		}
+	});
+};
+
 // export the class
 module.exports = Db;

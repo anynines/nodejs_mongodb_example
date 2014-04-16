@@ -70,19 +70,7 @@ var db = db_manager.connect();
 // print env information
 console.log("Starting application in " + app.get('env') + " mode.");
 
-// TODO: remove on finish
-db.once('open', function callback () {
-	models.Quote.find( function ( err, quotes ){
-		console.log(util.inspect(quotes));
-		/*
-		for(var i = 0; i<quotes.length; i++) {
-			debug(util.inspect(quotes[i]));
-		}
-		*/
-	});
-});
-
-
-
+// insert seeds when needed
+db_manager.insert_seeds_if_needed();
 
 module.exports = app;
