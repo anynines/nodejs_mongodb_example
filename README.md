@@ -1,18 +1,18 @@
-# nodejs_mongodb_example
+# Node.js x MongoDB example application
 
-A small example application for test deployments on anynines.
-
-
+We wrote a small example application to test deploying Node.js applications on [anynines](http://www.anynines.com/).
 
 ## Run locally
 
 Adjust the database connection credentials in the set_dev_environment.sh file and source it's contents. This is needed to insert the VCAP_SERVICES json hash into the application shell's environment. This simulates the process of anynines app containers.
 
-	vi set_dev_environment.sh
-    source set_dev_environment.sh
-    DEBUG=* bin/www
+<pre>
+vi set_dev_environment.sh
+source set_dev_environment.sh
+DEBUG=* bin/www
+</pre>
 
-## Deployment
+## Deploy your app on anynines
 
 ### Service dependencies
 
