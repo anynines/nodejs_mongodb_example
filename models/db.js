@@ -12,7 +12,7 @@ Db.prototype.connect = function() {
 	var options = { server: { socketOptions: { keepAlive: 1 } } };
 	mongoose.connect(this.read_mongodb_url_from_env(), options);
 	console.log('Connected to the database');
-	
+
 	this.connection = mongoose.connection;
 	this.connection.on('error', console.error.bind(console, 'connection error:'));
 	return this.connection;
@@ -21,7 +21,21 @@ Db.prototype.connect = function() {
 Db.prototype.read_mongodb_url_from_env = function() {
 	try {
 		var vcap_services = JSON.parse(process.env.VCAP_SERVICES);
-		mongo_url = vcap_services['mongodb-2.0'][0].credentials.url;
+		debug(JSON.stringify(vcap_services));
+		mongo_service = vcap_services['a9s-mongodb'][0];
+		debug(JSON.stringify(mongo_service));
+		mongo_user = mongo_service.credentials.username;
+		mongo_pass = mongo_service.credentials.password;
+		mongo_host = mongo_service.credentials.hosts[0];
+		mongo_db = mongo_service.credentials.default_database;
+
+		mongo_url = null
+		if(mongo_user == null && mongo_pass == null) {
+			mongo_url = "mongodb://" + mongo_host + "/" + mongo_db;
+		} else {
+			mongo_url = "mongodb://" + mongo_user + ":" + mongo_pass + "@" + mongo_host + "/" + mongo_db;
+		}
+
 		debug(JSON.stringify(mongo_url));
 		return mongo_url;
 	} catch (err) {
