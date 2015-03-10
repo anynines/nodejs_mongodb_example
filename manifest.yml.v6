@@ -1,11 +1,12 @@
 ---
+buildpack: http://github.com/heroku/heroku-buildpack-nodejs.git
+path: .
+services:
+  - mongodb_service_name
+
 applications:
-- name: app_name
+- name: app_identifier
   memory: 512M
-  buildpack: https://github.com/heroku/heroku-buildpack-nodejs.git
   instances: 1
-  host: app_name
+  host: app_identifier
   domain: de.a9sapp.eu
-  path: .
-  services:
-    - mongodb-app_name
