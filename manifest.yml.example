@@ -3,6 +3,8 @@ buildpack: http://github.com/heroku/heroku-buildpack-nodejs.git
 path: .
 services:
   - mongodb_service_name
+env:
+  MONGODB_SERVICE_NAME: "mongodb-2.0"
 
 applications:
 - name: app_identifier
