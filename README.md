@@ -18,25 +18,13 @@ DEBUG=* bin/www
 
 * MongoDB
 
-### Ruby cli (v5)
-
-Install ruby cli
-
-    $ gem install a9s
-
-Copy over the example manifest and rename all occurences of app_name with the desired application name.
-
-    cp manifest.yml.v5 manifest.yml
-
-    cf push
-
-### Go cli (v6)
+### Deployment Instructions
 
 Install the cf go cli: https://github.com/cloudfoundry/cli/releases
 
 Edit the deployment manifest
 
-		$ cp manifest.yml.v6 manifest.yml
+		$ cp manifest.yml.example manifest.yml
 		$ vim manifest.yml # exchange all occurences of app_name with your desired application identifier
 
 Create the needed services

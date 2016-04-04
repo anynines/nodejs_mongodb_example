@@ -1,0 +1,14 @@
+---
+buildpack: http://github.com/heroku/heroku-buildpack-nodejs.git
+path: .
+services:
+  - mongodb-app_name
+env:
+  MONGODB_SERVICE_NAME: "mongodb-2.0"
+
+applications:
+- name: app_name
+  memory: 200M
+  instances: 1
+  host: app_name
+  domain: de.a9sapp.eu
