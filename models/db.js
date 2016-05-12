@@ -22,7 +22,7 @@ Db.prototype.read_mongodb_url_from_env = function() {
 	try {
 		var mongodb_service_name = process.env.MONGODB_SERVICE_NAME;
 		var vcap_services = JSON.parse(process.env.VCAP_SERVICES);
-		mongo_url = vcap_services[mongodb_service_name][0].credentials.url;
+		mongo_url = vcap_services[mongodb_service_name][0].credentials.uri;
 		debug(JSON.stringify(mongo_url));
 		return mongo_url;
 	} catch (err) {
